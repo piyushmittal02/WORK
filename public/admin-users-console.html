@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+
+    <title>Document</title>
+    <script>
+
+        var mymodule = angular.module("kuchModule", []);
+
+        mymodule.controller("kuchController", function ($scope, $http) {
+
+            $scope.jsonArray = [];
+
+            $scope.doFetchAll = function () {
+                var url = "/do-fetch-all-users2";
+
+
+                $http.get(url).then(allGoodFx, someBadFx);
+                function allGoodFx(response) {
+                    //resp in JSON array
+                    //alert(JSON.stringify(response.data));
+                    $scope.jsonArray = response.data;
+                }
+                function someBadFx(response) {
+                    alert(JSON.stringify(response.data));
+                }
+            }
+            //--------------------------------------------------------
+            $scope.doDelete = function (emailid) {
+
+                var url = "/delete-one2?emailidKuch=" + emailid;
+
+                $http.get(url).then(allGoodFx, someBadFx);
+                function allGoodFx(response) {
+                    alert(response.data);//resp in string
+                    $scope.doFetchAll();
+                }
+
+                function someBadFx(response) {
+                    alert(JSON.stringify(response.data));
+                }
+            }
+            //-------------------------------------------------------------
+                     $scope.doresume = function (emailid) {
+                var url = "/resume-one?txtmail=" + emailid;
+                $http.get(url).then(allGoodFx, someBadFx);
+
+                function allGoodFx(response) {
+                    alert(response.data); // response in string
+                    $scope.doFetchAll();
+                }
+
+                function someBadFx(response) {
+                    alert(JSON.stringify(response.data));
+                }
+            };
+
+        })
+
+    </script>
+</head>
+
+<body ng-app="kuchModule" ng-controller="kuchController" ng-init="doFetchAll();">
+
+    <div class="row">
+        <div
+            style="padding:10px 0px 10px 0px; font-family: Lucida Handwriting	; background-color: #0d6efd; margin-top: 0px;">
+            <div style="margin-left: 40px; ">www.realjava</div>
+
+        </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center;">
+
+
+        <input type="button" value="Fetch All Records" style="width: 200px; height: 40px; border-radius: 10px; border: 1px black; background-color:  #dc3545;
+             color: white; font-weight: bolder; font-size: 15px; margin-top: 40px; margin-bottom: 20px;"
+            ng-click="doFetchAll();">
+
+
+
+        <h2>All Records</h2>
+        <table width="1100" border="1" rules="all">
+            <tr>
+                <th style="padding: 20px; background-color: rgb(40,40,40); color: white;">Sr.No</th>
+                <th style="background-color: rgb(40,40,40);color: white;">Email Id</th>
+                <th style="background-color: rgb(40,40,40);color: white;">User Type</th>
+
+                <th style="background-color: rgb(40,40,40);color: white;">Status</th>
+
+                <th style="background-color: rgb(40,40,40);color: white;">date of signup</th>
+
+
+                <th style="background-color: rgb(40,40,40);color: white;">Operations</th>
+            </tr>
+            <tr ng-repeat="obj in jsonArray">
+                <td>{{$index+1}}</td>
+
+                <td>{{obj.email}}</td>
+                <td>{{obj.utype}}</td>
+                <td>{{obj.status}}</td>
+                <td>{{obj.doj}}</td>
+
+
+
+
+
+                <th>
+                    <input type="button" ng-click="doDelete(obj.email);" value="Block"
+                        style="border: 1px black; border-radius: 5px; background-color: #dc3545; color:white; height: 30px;">
+
+
+                    <input type="button" ng-click="doresume(obj.email);" value="resume"
+                        style="border: 1px black; border-radius: 5px; background-color: #12d116; color:white; height: 30px; margin-left: 10px;">
+                </th>
+            </tr>
+
+
+
+        </table>
+
+
+
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>

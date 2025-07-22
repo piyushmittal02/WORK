@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+
+    <title>Document</title>
+    <script>
+
+        var mymodule = angular.module("kuchModule", []);
+
+        mymodule.controller("kuchController", function ($scope, $http) {
+
+            $scope.jsonArray = [];
+
+            $scope.doFetchAll = function () {
+
+                var url = "/fetch-all?email=" + $scope.email6;
+                alert($scope.email6);
+
+
+                $http.get(url).then(allGoodFx, someBadFx);
+                function allGoodFx(response) {
+                    //resp in JSON array
+                    alert(JSON.stringify(response.data));
+                    $scope.jsonArray = response.data;
+                }
+
+                function someBadFx(response) {
+                    alert(JSON.stringify(response.data));
+                }
+            }
+            //----------------------
+            $scope.doDelete = function (rid) {
+
+                var url = "/delete-one?rid_kuchh=" + rid;
+
+                $http.get(url).then(allGoodFx, someBadFx);
+                function allGoodFx(response) {
+                    alert(response.data);//resp in string
+                    $scope.doFetchAll();
+                }
+
+                function someBadFx(response) {
+                    alert(JSON.stringify(response.data));
+                }
+            }
+
+
+        })
+
+    </script>
+
+    <script>
+        function showuser() {
+            let activeuser = localStorage.getItem("activeuser");
+            document.getElementById("email").value = activeuser;
+        }
+
+    </script>
+</head>
+
+<body ng-app="kuchModule" ng-controller="kuchController" ;>
+
+    <center>
+        <input type="text" id="email" name="email6" ng-model="email6">
+
+        <input type="button" value="fetch all records" ng-click="doFetchAll();">
+        <h2>All Records</h2>
+        <table width="800" border="1" rules="all">
+            <tr style="padding: 10px;">
+                <th style="padding: 10px;">sr.no</th>
+                <th>Email id</th>
+                <th>event</th>
+                <th>doe</th>
+                <th>toe</th>
+                <th>address</th>
+                <th>city</th>
+                <th>sports</th>
+                <th>minage</th>
+                <th>maxage</th>
+                <!-- <th>pic</th> -->
+                <th>Additional Info</th>
+                <th>del</th>
+            </tr>
+            <tr ng-repeat="obj in jsonArray">
+                <td> {{$index+1}} </td>
+                <td>{{obj.emailid}}</td>
+                <td>{{obj.evente}}</td>
+                <td>{{obj.doe}}</td>
+                <td>{{obj.toe}}</td>
+                <td>{{obj.address}}</td>
+                <td>{{obj.city}}</td>
+                <td>{{obj.sports}}</td>
+                <td>{{obj.minage}}</td>
+                <!-- <td>{{obj.head}}</td>
+                <td>{{obj.sports}}</td> -->
+                <!-- <td> <a href={{obj.picurl}}>
+                        <img src={{obj.picurl}} width="50" height="50">
+                    </a></td>  -->
+                <td>{{obj.info}}</td>
+                <td></td>
+                <td><input type="button" value="delete" ng-click="doDelete(obj.rid);"></td>
+
+
+
+            </tr>
+
+        </table>
+
+    </center>
+</body>
+
+</html>

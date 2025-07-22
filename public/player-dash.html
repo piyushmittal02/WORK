@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+
+
+    <script>
+        var mymodule = angular.module("kuchModule", []);
+
+        mymodule.controller("kuchController", function ($scope, $http) {
+
+
+            $scope.txtemail5;
+            $scope.txtpwd5;
+            $scope.txtpwd4;
+
+
+            //   alert($scope.selgame);
+            $scope.doFetchAll = function () {
+                alert();
+                var url = "/do-update-pass?kuchemail=" + $scope.txtemail5 + "&kuchnew=" + $scope.txtpwd5 + "&kuchold=" + $scope.txtpwd4;
+
+                $http.get(url).then(allGoodFx, someBadFx);
+                function allGoodFx(response) {
+                    //resp in JSON array
+                    //   alert(JSON.stringify(response.data));
+                    alert(JSON.stringify(response.data));
+                }
+                function someBadFx(response) {
+                    // alert(JSON.stringify(response.data));
+                }
+            };
+        })
+
+    </script>
+    <script>
+        function dologout() {
+            localStorage.removeItem("activeuser");
+            location.href = "index.html";
+        }
+
+    </script>
+</head>
+
+<body ng-app="kuchModule" ng-controller="kuchController">
+    <center>
+        <div class="card" style="width: 18rem;float: left;margin-left: 150px; margin-top: 40px;">
+            <img src="/pics/pexels-kelly-1179532-32098421.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <a href="/profile" class="btn btn-primary">player-profile</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;float: left;margin-left:40px ;margin-top: 40px;">
+            <img src="/pics/pexels-pixabay-46798.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <a href="" class="btn btn-primary">player-event</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;float: left;margin-left: 50px; margin-top: 40px;">
+            <img src="/pics/pexels-pixabay-210881.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#user-console">settings</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;float: left;margin-left: 50px; margin-top: 40px;">
+            <img src="/pics/pexels-pixabay-210881.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <a href="" class="btn btn-primary" onclick="dologout();">Logout</a>
+            </div>
+        </div>
+    </center>
+
+    <!-- //////===============MODALS=======MODALS=============================== -->
+
+    <div class="modal fade" id="user-console" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Users Console</h1>
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="txtemail5" name="txtemail5"
+                                aria-describedby="emailHelp" ng-modal="txtemail5">
+                            <div id="emailhelp" class="form-text"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label"> OLd Password</label>
+                            <input type="password" class="form-control" id="txtpwd4" name="txtpwd4" ng-modal="txtpwd4">
+                            <div id="pwd" class="form-text"></div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label"> New Password</label>
+                            <input type="password" class="form-control" id="txtpwd5" name="txtpwd5" ng-modal="txtpwd5">
+                            <div id="pwd" class="form-text"></div>
+
+                        </div>
+
+
+                        <div class="modal-footer ">
+                            <input type="button" value="update password" class="btn btn-success"
+                                style="margin-right: 150px;" ng-click="doFetchAll();">
+                        </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </center>
+</body>
+
+</html>

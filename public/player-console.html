@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+
+    <script>
+        var mymodule = angular.module("kuchModule", []);
+
+        mymodule.controller("kuchController", function ($scope, $http) {
+
+            $scope.jsonArray = [];
+
+            $scope.doFetchAll = function () {
+                var url = "/do-fetch-players";
+
+                // alert();
+
+                $http.get(url).then(allGoodFx, someBadFx);
+                function allGoodFx(response) {
+                    //resp in JSON array
+                    //alert(JSON.stringify(response.data));
+                    $scope.jsonArray = response.data;
+                }
+
+                function someBadFx(response) {
+                    alert(JSON.stringify(response.data));
+                }
+            }
+            //----------------------
+            // $scope.doDelete = function (emailid) {
+
+            //     var url = "/delete-one2?emailidKuch=" + emailid;
+
+            //     $http.get(url).then(allGoodFx, someBadFx);
+            //     function allGoodFx(response) {
+            //         alert(response.data);//resp in string
+            //         $scope.doFetchAll();
+            //     }
+
+            //     function someBadFx(response) {
+            //         alert(JSON.stringify(response.data));
+            //     }
+            // }
+            // //-----------------------------------------
+            // $scope.doresume = function (emailid) {
+            //     var url = "/resume-one?txtmail=" + emailid;
+            //     $http.get(url).then(allGoodFx, someBadFx);
+
+            //     function allGoodFx(response) {
+            //         alert(response.data); // response in string
+            //         $scope.doFetchAll();
+            //     }
+
+            //     function someBadFx(response) {
+            //         alert(JSON.stringify(response.data));
+            //     }
+            // };
+
+        })
+
+
+
+    </script>
+
+</head>
+
+
+
+
+
+
+
+
+<body ng-app="kuchModule" ng-controller="kuchController" ng-init="doFetchAll();">
+
+    <div class="row">
+        <div
+            style="padding:10px 0px 10px 0px; font-family: Lucida Handwriting	; background-color: #0d6efd; margin-top: 0px;">
+            <div style="margin-left: 40px; ">www.realjava</div>
+
+        </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center;">
+
+
+        <input type="button" value="Fetch All Records" style="width: 200px; height: 40px; border-radius: 10px; border: 1px black; background-color:  #dc3545;
+             color: white; font-weight: bolder; font-size: 15px; margin-top: 40px; margin-bottom: 20px;"
+            ng-click="doFetchAll();">
+
+
+
+
+        <h2>All Records</h2>
+        <table width="1100" border="1" rules="all">
+            <tr>
+                <th style="padding: 20px; background-color: rgb(40,40,40); color: white; padding: 20px;">Sr.No</th>
+                <th style="background-color: rgb(40,40,40);color: white;margin-left: 10px;padding: 20px;">Email Id</th>
+                <th style="background-color: rgb(40,40,40);color: white;margin-left: 10px;padding: 20px;">adhaar card
+                    name</th>
+                <th style="background-color: rgb(40,40,40);color: white;margin-left: 10px;padding: 20px;">Profile Pic
+                    No</th>
+                <th style="background-color: rgb(40,40,40);color: white;margin-left: 10px;padding: 20px;">Name</th>
+                <th style="background-color: rgb(40,40,40);color: white;margin-left: 10px;padding: 20px;">address</th>
+                <th style="background-color: rgb(40,40,40);color: white;padding: 20px;">Contact</th>
+                <th style="background-color: rgb(40,40,40);color: white;padding: 20px;">sports</th>
+                <!-- <th style="background-color: rgb(40,40,40);color: white; padding: 20px;">pic</th> -->
+
+
+            </tr>
+            <tr ng-repeat="obj in jsonArray">
+                <td>{{$index+1}}</td>
+                <td>{{obj.emailid}}</td>
+                <!-- <td>{{obj.}}</td> -->
+                <!-- <td>{{obj.pic}}</td> -->
+                <td>{{obj.name}}</td>
+                <td>{{obj.address}}</td>
+                <td>{{obj.contact}}</td>
+                <td>{{obj.sports}}</td>
+                <!-- <td>{{obj.picurl}}</td> -->
+            </tr>
+
+
+
+        </table>
+
+
+
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>

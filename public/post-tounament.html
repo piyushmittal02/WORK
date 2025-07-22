@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("#publish").click(function () {
+                   alert();
+                let obj = {
+                    type: "get",
+                    url: "/get-third",
+                    data: {
+                        txtemail4: $("#txtemail4").val(),
+                        event: $("#event").val(),
+                        doe: $("#doe").val(),
+                        toe: $("#toe").val(),
+                        address: $("#address").val(),
+                        city: $("#city").val(),
+                        sports: $("#sports").val(),
+                        minage: $("#minage").val(),
+                        maxage: $("#maxage").val(),
+                        lastage: $("#lastdate").val(),
+                        fee: $("#fee").val(),
+                        prize: $("#prize").val(),
+                        contact: $("#contact").val()
+
+                    }
+                }
+                $.ajax(obj).then(function (responseJsonAry) {
+                    alert(responseJsonAry);
+                }).fail(function (err) {
+                    alert(err.message);
+                    // console.log(err.message);
+                })
+            })
+        })
+    </script>
+    <script>
+        function showuser() {
+            let activeuser = localStorage.getItem("activeuser");
+            document.getElementById("txtemail4").value = activeuser;
+        }
+
+    </script>
+
+</head>
+
+<body onload="showuser();">
+    <div class="row " style="padding:14px 0px 14px 0px; width: 100%;">
+        <div class="col-md-12  bg-primary text-white">
+            www.realJavaOnline.com
+        </div>
+    </div>
+    <div class="container mt-4">
+
+
+
+        <div class="col-md-8 offset-md-2">
+
+            <form class="row g-3 needs-validation" novalidate
+                style="border: 1px;box-shadow: 1px 1px 10px black; margin-bottom: 40px; border-radius: 10px;">
+                <div class="row ">
+                    <div class="col-md-8 offset-md-2 bg-white text-red">
+                        <center>
+                            <h2 style="text-align: center; margin-top: 20px;">Tounament Details</h2>
+                        </center>
+                    </div>
+                </div>
+                <input type="hidden" id="hdn" name="hdn">
+                <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label">email</label>
+                    <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" id="search" name="search">search</button> -->
+
+                    <input type="text" class="form-control" id="txtemail4" name="txtemail4" value="id" required>
+
+                    <div class="valid-feedback">
+                        .
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom02" class="form-label">event title</label>
+                    <input type="text" class="form-control" id="event" name="event" value="" required>
+                    <div class="valid-feedback">
+                        Looks good
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustomUsername" class="form-label">date</label>
+                    <div class="input-group has-validation">
+                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                        <input type="date" class="form-control" id="doe" name="doe" aria-describedby="inputGroupPrepend"
+                            required>
+                        <div class="invalid-feedback">
+                            Please write correct registration no
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom03" class="form-label">time</label>
+                    <input type="time" class="form-control" id="toe" name="toe" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid address
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom04" class="form-label">City</label>
+                    <select class="form-select" id="city" name="city" required>
+                        <option selected disabled value="">Choose</option>
+                        <option>bathinda</option>
+                        <option>jalender</option>
+                        <option>ludhina</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a valid city
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom04" class="form-label">deals in sports</label>
+                    <select class="form-select" id="sports" name="sports" required>
+                        <option selected disabled value="">Choose</option>
+                        <option>cricket</option>
+                        <option>football</option>
+                        <option>tennis</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a valid sport
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="validationCustom06" class="form-label">address</label>
+                    <input type="text" class="form-control" id="address" name="address" value="" required>
+                    <div class="valid-feedback">
+                        .
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label">Min Age</label>
+                    <input type="number" min="10" class="form-control" id="minage" name="minage" value="" required>
+                    <div class="valid-feedback">
+                        .
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label">Max Age</label>
+                    <input type="number" min="60" class="form-control" id="maxage" name="maxage" value="" required>
+                    <div class="valid-feedback">
+                        .
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label">Last Date Of Registration</label>
+                    <input type="date" class="form-control" id="lastdate" name="lastdate" value="" required>
+                    <div class="valid-feedback">
+                        .
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label">Fee</label>
+                    <input type="text" class="form-control" id="fee" name="fee" value="" required>
+                    <div class="valid-feedback">
+                        .
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label">contact person</label>
+                    <input type="text" class="form-control" id="contact" name="contact" value="" required>
+                    <div class="valid-feedback">
+                        .
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="validationCustom01" class="form-label">prize money</label>
+                    <input type="number" min="100" class="form-control" id="prize" name="prize" value="" required>
+                    <div class="valid-feedback">
+                        .
+                    </div>
+                </div>
+                <div class="col-12">
+                    <center> <button class="btn btn-primary" type="button" style="margin-bottom: 20px;" id="publish"
+                            name="publish">Publish event </button></center>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

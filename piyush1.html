@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sports Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #004aad, #0076d6);
+            border: none;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+            font-size: 1.8rem;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .nav-item .btn {
+            margin-left: 10px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-header {
+            background-color: #004aad;
+            color: white;
+            padding: 10px 0;
+            font-size: 24px;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .card img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            background-color: #ffffff;
+        }
+
+        .card-title {
+            font-weight: bold;
+        }
+
+        .modal-header {
+            background-color: #004aad;
+            color: white;
+        }
+
+        .modal-footer {
+            background-color: #f1f1f1;
+        }
+
+        .gallery {
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            margin: 10px;
+            width: 30%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .gallery img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Sports</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="index.html" class="btn btn-success">Home</a></li>
+                    <li class="nav-item"><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#signup">Signup</button></li>
+                    <li class="nav-item"><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button></li>
+                    <li class="nav-item"><button class="btn btn-success">Reach Us</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery -->
+    <div class="container gallery text-center">
+        <img src="/public/pics/pexels-chuck-2834917.jpg" alt="Sport 1">
+        <img src="/public/pics/pexels-joel-de-leon-227206-934083.jpg" alt="Sport 2">
+        <img src="/public/pics/pexels-pixabay-209933.jpg" alt="Sport 3">
+    </div>
+
+    <!-- Services Section -->
+    <div class="text-center service-header">
+        Our Services
+    </div>
+
+    <!-- Cards -->
+    <div class="container d-flex flex-wrap justify-content-center gap-4 mt-4">
+        <div class="card" style="width: 18rem;">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Service 1">
+            <div class="card-body">
+                <h5 class="card-title">Event Management</h5>
+                <p class="card-text">Organize and manage sports events with ease.</p>
+                <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Service 2">
+            <div class="card-body">
+                <h5 class="card-title">Player Registration</h5>
+                <p class="card-text">Easily register and track players across events.</p>
+                <a href="#" class="btn btn-primary">Register Now</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Service 3">
+            <div class="card-body">
+                <h5 class="card-title">Live Scores</h5>
+                <p class="card-text">Stay updated with real-time scores and updates.</p>
+                <a href="#" class="btn btn-primary">View Scores</a>
+            </div>
+        </div>
+    </div>

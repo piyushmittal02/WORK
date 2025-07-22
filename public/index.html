@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    
+  <script>
+    $(document).ready(function () {
+
+      // =============== Signup  ajac ================ //
+
+      $("#sbtm").click(function () {
+        let obj = {
+          type: "get",
+          url: "/get-one",
+          data: {
+            txtemail1: $("#txtemail1").val(),
+            txtpwd1: $("#txtpwd1").val(),
+            combo: $("#combo").val(),
+          }
+        }
+        $.ajax(obj).then(function (responseJsonAry) {
+          alert(responseJsonAry);
+          // if (responseJsonAry == "Invalid") {
+          //   if ($("#txtemail1").val() != "") {
+          //     if ($("#txtpwd1").val() != "") {
+          //       if ($("#combo").val() == "Player" || $("#combo").val() == "Organizer") {
+          //         $("#errutype").html("").removeClass();
+          //       } else {
+          //         $("#errutype").html("required").removeClass().addClass("text-danger");
+          //       }
+          //     } else {
+          //       $("#errPwd").html("password required").removeClass().addClass("text-danger");
+          //     }
+          //   } else {
+          //     $("#errEmail").html("Email ID required").removeClass().addClass("text-danger");
+          //   }
+          // } else {
+          //   alert(responseJsonAry);
+          // }
+        }).fail(function (err) {
+          alert(err.message)
+        });
+      });
+
+      // =============== Login ajac ================ //
+
+
+      $("#lbtm").click(function () {
+       // alert();
+        let obj = {
+          type: "get",
+          url: "/chk-email",
+          data: {
+            txtemail2: $("#txtemail2").val(),
+            txtpwd2: $("#txtpwd2").val(),
+          }
+        }
+        $.ajax(obj).then(function (response) {
+
+          if (response == "Blocked")
+
+            alert("soory ur id is blocked");
+
+          else if (response == "Invalid")
+
+            alert("invalid email or password");
+
+          alert(response);
+
+           if (response == "player") {
+            localStorage.setItem("activeuser", $("#txtemail2").val());
+            location.href = "player-dash.html";
+          }
+          else if (response == "organiser") {
+            localStorage.setItem("activeuser", $("#txtemail2").val());
+
+            location.href = "org-template.html";
+          }
+          else if (response == "admin"){
+            location.href = "";
+          localStorage.setItem("activeuser", $("#txtemail2").val());
+
+          }
+        }).fail(function (err) {
+          alert(err.message)
+        })
+      })
+
+      //---------------------------validation of signup---------------------------------
+
+      $("#txtemail1").keyup(function () {
+        let email = $(this).val();
+        let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{3}$/;
+        if (email == "") {
+          $("#emailhelp").html("empty");
+          $(this).focus();
+        }
+        else if (regex.test(email) == false) {
+          $("#emailhelp").html("please fill correct email");
+          $(this).focus();
+        }
+        else {
+          $("#emailhelp").html("ok");
+          $(this).focus();
+        }
+      })
+      $("#txtpwd1").keyup(function () {
+        let passward = $(this).val();
+        if (passward == "") {
+          $("#pwd").html("empty");
+          $(this).focus();
+        }
+        else if (passward < 8) {
+          $("#pwd").html("passward at least 8 digits");
+          $(this).focus();
+        }
+        // else if(passward > 8){
+        //    $("#pwd").html("ok");
+        //   $(this).focus();
+        // }
+      })
+
+    })
+
+  </script>
+
+</head>
+<body>
+
+
+  <center>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#signup">signup</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">login</button>
+    <!-- <a href="" class="btn btn-success">org-Details</a> -->
+    <form action="/org-template"><button type="submit" class="btn btn-success" style="margin-top: 50px;">Organisation
+        Dash</button></form>
+    <form action="/player"><button type="submit" class="btn btn-success" style="margin-top: 50px;">player-
+        details</button></form>
+    <form action="/dash-admin"><button type="submit" class="btn btn-success"
+        style="margin-top: 50px;">player-organiser-console
+      </button></form>
+    <form action="/dash-tour"><button type="submit" class="btn btn-success" style="margin-top: 50px;">tournament-details
+      </button></form>
+  </center>
+
+
+
+  <!-- Signup Modal -->
+  <div class="modal fade" id="signup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Sign in</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="txtemail1" name="txtemail1" aria-describedby="emailHelp">
+              <div id="emailhelp" class="form-text">*</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="txtpwd1" name="txtpwd1">
+              <div id="pwd" class="form-text">*</div>
+
+            </div>
+
+            <select class="form-select" id="combo" name="combo" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="organiser">Organiser</option>
+              <option value="player">player</option>
+            </select>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="sbtm" class="btn btn-success">Signup</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!--Login Modal -->
+  <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="txtemail2" name="txtemail2" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="txtpwd2" name="txtpwd2">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+          <button type="button" class="btn btn-primary" id="lbtm" name="lbtm">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            /* background-color:rgb(245, 240, 240); */
+        }
+
+        
+
+        button {
+            margin-right: 0px;
+            /* border: 10px black; */
+            /* border-radius: 5000px; */
+        }
+
+        #sign {
+            margin-left: 160px;
+            /* background-color: blue; */
+            margin-top: 10px;
+            float: right;
+            /* box-shadow: 2px 2px 2px grey; */
+            margin-bottom: 10px;
+
+
+        }
+
+        #login {
+            margin-left: 200px;
+            margin-top: 10px;
+            float: right;
+            /* box-shadow: 2px 2px 2px grey; */
+            margin-bottom: 10px;
+            margin-right: 10px;
+
+        }
+
+        #reach {
+            margin-left: 220px;
+            margin-top: 10px;
+            float: right;
+            /* box-shadow: 2px 2px 2px grey; */
+            margin-bottom: 10px;
+
+
+        }
+
+        #home {
+            text-decoration: none;
+            margin-left: 160px;
+            margin-top: 10px;
+            float: right;
+            /* box-shadow: 2px 2px 2px grey; */
+            margin-bottom: 10px;
+        }
+    </style> -->
+
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <center>
+        <nav class="navbar navbar-expand-lg" style="height: 50px; background-color: blue;border:2px black solid;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="" id="nav">Sports</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <!-- <li class="nav-item">
+                            <a href="index.html" id="home" type="button" class="btn btn-success">H
+                        </li> -->
+                        
+                        <li class="nav-item">
+                            <button id="sign" class="btn btn-success mx-3" data-bs-toggle="modal"
+                                data-bs-target="#signup">Signup</button>
+                        </li>
+                        <li class="nav-item">
+                            <button id="login" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#login">Login</button>
+                        </li>
+                        <!-- <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li> -->
+                        <li class="nav-item">
+                            <button id="reach" class="btn btn-success" data-bs-target="">Reach Us</button>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <button class="btn btn-primary" style="float: right;">home</button>
+            </div>
+        </nav>
+        <div style="margin-top: 3px;">
+            <img src="/public/pics/pexels-chuck-2834917.jpg" alt="" width="300px" height="300px"
+                style="border: 1px black;border: 1px black solid;border-radius: 5px;margin-right: 100px;">
+
+            <img src="/public/pics/pexels-joel-de-leon-227206-934083.jpg" alt="" width="300px" height="300px"
+                style="border: 1px black;border: 1px black solid;border-radius: 5px;">
+
+            <img src="/public/pics/pexels-pixabay-209933.jpg" alt="" width="300px" height="300px"
+                style="border: 1px black;border: 1px black solid;border-radius: 5px;">
+        </div>
+
+        <div style="margin-top: 2px;border: 1px black solid;background-color: blue;">
+            <span
+                style="color: white;font-size: x-large;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Our
+                Services</span>
+        </div>
+        <center>
+            <div style="margin-top: 10px;margin-right: 200px;">
+                <div class="card" style="width: 18rem;margin-top: 3px;float: right; margin-right: 80px;">
+                    <img src="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text"></p>
+                        <a href="#" class="btn btn-primary"></a>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 18rem;margin-top: 3px;float: right; margin-right: 80px;">
+                    <img src="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Player Registration</h5>
+                        <p class="card-text">Easily register and track players across events.
+
+</p>
+                        <a href="#" class="btn btn-primary"></a>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 18rem;margin-top: 3px; float: right;margin-right: 80px;">
+                    <img src="" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Event Management
+                        </h5>
+                        <p class="card-text">Organize and manage sports events with ease.</p>
+                        <a href="#" class="btn btn-primary"></a>
+                    </div>
+                </div>
+            </div>
+             <div style="margin-top: 2px;border: 1px black solid;background-color: blue;">
+           
+        </div>
+         <span
+                style="color: white;font-size: x-large;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Our
+                Services</span>
+        </center>
+    </center>
+
+
+
+
+
+
+    <!---------------------modals---------------------------->
+
+
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Sign in</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="txtemail1" name="txtemail1"
+                                aria-describedby="emailHelp">
+                            <div id="emailhelp" class="form-text">*</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="txtpwd1" name="txtpwd1">
+                            <div id="pwd" class="form-text">*</div>
+
+                        </div>
+
+                        <select class="form-select" id="combo" name="combo" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="organiser">Organiser</option>
+                            <option value="player">player</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="sbtm" class="btn btn-success">Signup</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--Login Modal -->
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="txtemail2" name="txtemail2"
+                                aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="txtpwd2" name="txtpwd2">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-primary" id="lbtm" name="lbtm">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
