@@ -43,7 +43,7 @@ app.get("/org-details", function (req, resp) {
 
 //--------aiven-----------
 let aiven = "mysql://avnadmin:AVNS_oLQlHuqn4241nOAtiul@mysql-36ecd483-piyushmittal02062007-08bc.c.aivencloud.com:14135/defaultdb"
-server = mysql2.createConnection(aiven);
+server = mysql2.createPool(aiven);
 server.connect(function (err) {
     if (err == null) {
         console.log("chal pada");
